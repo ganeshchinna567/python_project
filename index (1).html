@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Tracker</title>
+</head>
+<body>
+    <h1>Student Tracker</h1>
+    <a href="{{ url_for('add_student') }}">Add Student</a>
+    <ul>
+        {% for student in students %}
+            <li>
+                {{ student.name }} ({{ student.roll_number }})
+                <a href="{{ url_for('view_student', roll_number=student.roll_number) }}">View Details</a>
+                <a href="{{ url_for('add_grade', roll_number=student.roll_number) }}">Add Grade</a>
+                <a href="{{ url_for('calculate_average', roll_number=student.roll_number) }}">Calculate Average</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
